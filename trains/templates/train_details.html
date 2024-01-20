@@ -66,8 +66,8 @@
     <div class="card-body">
         {%for comment in comments%}
             <div class="p-2 lh-4 bg-body-secondary">
-                <p><small class='fw-bold'>{{comment.name}}</small> <small class='fs-6'>{{comment.created_on}}</small></p>
-                <p>{{comment.body}}</p>
+                <p><small class='fw-bold'>{{comment.name}}</small> <small class='fs-6'>{{comment.date}}</small></p>
+                <p>{{comment.comment}}</p>
             </div>
         {%endfor%}
     </div>
