@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
+
+<div class="container" style="width: 80%; margin: auto; margin-top:100px;">
+  <h2 class="text-success text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
+  {% if messages %} 
+  {% for message in messages %}
+  <p {% if message.tags %} class="{{ message.tags }} text-center fw-bold" {% endif %}>
+    {{ message }}
+  </p>
+  {% endfor %} 
+  {% endif %}  
+  <h4 class="text-bg-warning text-center p-2"><a class="text-decoration-none text-black" href="{% url 'update_profile'%}">Update Your Profile</a></h4>
+    <h4 class="text-bg-success text-center p-2"><a class="text-decoration-none text-black" href="{% url 'update_password'%}">Update Your Password</a></h4>
+    <div class="booking_history">
+        <h4 class="text-center">Booking History</h4>
+        <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Train</th>
+                <th scope="col">Departure Station</th>
+                <th scope="col">Arrival Station</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Seat No</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% if bookings %}
+                    {% for booking in bookings %}
+                        <tr>
+                            <th scope="row">{{ booking.id }}</th>
+                            <td>{{ booking.train.train }}</td>
+                            <td>{{ booking.train.departure_station }}</td>
+                            <td>{{ booking.train.arrival_station }}</td>
+                            <td>{{ booking.train.date_of_journey }}</td>
+                            <td>{{ booking.train.departure_time }}</td>
+                            <td>{{ booking.booked_seat }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-danger fw-bold">No bookings available.</td>
+                    </tr>
+                {% endif %}
+
+             
+            </tbody>
+          </table>
+    </div>
+    
+</div>
+{% endblock content %}
