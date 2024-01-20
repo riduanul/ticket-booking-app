@@ -18,7 +18,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://ticket-booking-app-nl0a.onrender.com/', 'https://*.127.0.0.1', 'https://ticket-booking-app-nl0a.onrender.com/', 'https://ticket-booking-app-nl0a.onrender']
+CSRF_TRUSTED_ORIGINS = ['https://ticket-booking-app-nl0a.onrender.com/', 'https://*.127.0.0.1', 'https://ticket-booking-app-nl0a.onrender.com', 'https://ticket-booking-app-nl0a.onrender']
 
 # Application definition
 
