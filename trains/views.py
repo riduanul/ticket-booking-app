@@ -33,20 +33,24 @@ class Trains(LoginRequiredMixin, FormView):
 
 class TrainDetails(LoginRequiredMixin, DetailView):
     model = Schedule
-    template_name= 'train_details.html'
+    template_name = 'train_details.html'
     context_object_name = 'train'
 
     def post(self, request, *args, **kwargs):
-        comment_form = CommentForm(data = self.request.POST)
+        comment_form = CommentForm(data=self.request.POST)
         train = self.get_object()
-        
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.train = train
-            new_comment.save()
-            return redirect('details', pk = train.pk)
+
+        if self.user_has_booking(request.user, train):
+            if comment_form.is_valid():
+                new_comment = comment_form.save(commit=False)
+                new_comment.train = train
+                new_comment.save()
+                return redirect('details', pk=train.pk)
+            else:
+                messages.error(request, "Invalid comment")
         else:
-            messages.error(request, "invalid comment")
+            messages.error(request, "You can only comment if you have booked a ticket.")
+
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -56,17 +60,19 @@ class TrainDetails(LoginRequiredMixin, DetailView):
         booked_seats = Booking.objects.filter(train=train)
         booked_seat_numbers = [booking.booked_seat for booking in booked_seats]
         comments = train.comments.all()
-        print(train, comments)
         comment_form = CommentForm()
-               
+
         context.update({
             'available_seats': available_seats,
             'booked_seat_numbers': booked_seat_numbers,
-            'comments':comments,
-            'comment_form' : comment_form
+            'comments': comments,
+            'comment_form': comment_form
         })
 
         return context
+
+    def user_has_booking(self, user, train):
+        return Booking.objects.filter(user__user=user, train=train).exists()
 
 class BookSeatView(LoginRequiredMixin, View):
     
