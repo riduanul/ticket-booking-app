@@ -36,16 +36,34 @@ class TrainDetails(LoginRequiredMixin, DetailView):
     template_name= 'train_details.html'
     context_object_name = 'train'
 
+    def post(self, request, *args, **kwargs):
+        comment_form = CommentForm(data = self.request.POST)
+        train = self.get_object()
+        
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.train = train
+            new_comment.save()
+            return redirect('details', pk = train.pk)
+        else:
+            messages.error(request, "invalid comment")
+        return self.get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         train = self.object
         available_seats = range(1, train.available_seats + 1)
         booked_seats = Booking.objects.filter(train=train)
         booked_seat_numbers = [booking.booked_seat for booking in booked_seats]
-        
+        comments = train.comments.all()
+        print(train, comments)
+        comment_form = CommentForm()
+               
         context.update({
             'available_seats': available_seats,
             'booked_seat_numbers': booked_seat_numbers,
+            'comments':comments,
+            'comment_form' : comment_form
         })
 
         return context
@@ -59,49 +77,31 @@ class BookSeatView(LoginRequiredMixin, View):
         comment_form = CommentForm(data = self.request.POST)        
         user_instance = Passenger.objects.get(user=request.user)
         
-        if  'booking_btn_submit' in request.POST:
-            if not seat_number:
-                messages.warning(request, "Please enter a seat number.")
-                return redirect('details', pk=train.pk)
+        
+        if not seat_number:
+            messages.warning(request, "Please enter a seat number.")
+            return redirect('details', pk=train.pk)
 
-            if not seat_number.isdigit() or int(seat_number) not in range(1, train.available_seats + 1):
-                messages.warning(request, "Invalid Seat Number")
-                return redirect('details', pk=train.pk)
+        if not seat_number.isdigit() or int(seat_number) not in range(1, train.available_seats + 1):
+            messages.warning(request, "Invalid Seat Number")
+            return redirect('details', pk=train.pk)
 
-            if Booking.objects.filter( train=train, booked_seat=seat_number).exists():
-                messages.warning(request, "Sorry Seat Already Booked")
-                return redirect('details', pk=train.pk)
-            
-            if train.ticket_price > user_instance.balance:
-                messages.warning(request, "Insufficient Balance")
-                return redirect('details', pk=train.pk)
+        if Booking.objects.filter( train=train, booked_seat=seat_number).exists():
+            messages.warning(request, "Sorry Seat Already Booked")
+            return redirect('details', pk=train.pk)
+        
+        if train.ticket_price > user_instance.balance:
+            messages.warning(request, "Insufficient Balance")
+            return redirect('details', pk=train.pk)
 
-            user_instance.balance -= train.ticket_price
-            user_instance.save()
-            
-            Booking.objects.create(user=user_instance, train=train, booked_seat=seat_number)
-            messages.success(request, "Successfully ticket has been booked!")
-            train.available_seats -= 1
-            train.save()
-        elif  'comment_btn_submit' in request.POST:
-            if comment_form.is_valid():
-                new_comment = comment_form.save(commit=False)
-                new_comment.train = train
-                new_comment.save()
-                return redirect('details', pk = train.pk)
-            else:
-                messages.error(request, "invalid comment form")
-        return redirect('details', pk=train.pk)
+        user_instance.balance -= train.ticket_price
+        user_instance.save()
+        
+        Booking.objects.create(user=user_instance, train=train, booked_seat=seat_number)
+        messages.success(request, "Successfully ticket has been booked!")
+        train.available_seats -= 1
+        train.save()
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        train = get_object_or_404(Schedule, pk=self.kwargs.get('pk'))
-        comments = train.comments.all
-
-        comment_form = CommentForm()
-
-        context['train'] = train
-        context['comments'] = comments
-        context['comment_form'] = comment_form
-        return context
+        return redirect('details', pk=train.pk)
+   
 

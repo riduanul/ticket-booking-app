@@ -25,7 +25,7 @@ from django.http import Http404
 class SignupView(FormView):
     form_class = RegistrationForm
     template_name = 'registration.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
         user = form.save()
