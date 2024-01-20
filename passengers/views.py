@@ -38,7 +38,7 @@ class SignupView(FormView):
         email = EmailMultiAlternatives(email_subject, '', to=[user.email])
         email.attach_alternative(email_body, 'text/html')
         email.send()
-        messages.success(self.request, "Check Your Email To Confirm Email ")
+        messages.success(self.request, " Signup Successfull. Check Your Email To Confirm Email ")
        
         return super().form_valid(form)
     
@@ -60,6 +60,7 @@ def userActivation(request, uidb64, token ):
 class LoginView(LoginView):
     template_name = 'login.html'
     def get_success_url(self):
+       messages.success(self.request, " Successfully Loggedin! ")
        return reverse_lazy('home')
 
 def userLogout(request):
@@ -129,4 +130,5 @@ class DepositMoneyView(LoginRequiredMixin, CreateView):
         account = self.request.user.user_account
         account.balance += amount
         account.save(update_fields = ['balance'])
+        messages.success(self.request, 'Successfully {amount} added to you account ')
         return super().form_valid(form)
