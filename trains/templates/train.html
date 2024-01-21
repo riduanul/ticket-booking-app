@@ -2,9 +2,6 @@
 {% block content %}
 {%load static%}
 {%load crispy_forms_tags%}
-
-<div class="trains w-50 mx-auto p-5 mb-5  text-white fw-bold border border-2 border-success" style="margin-top: 150px; margin-bootm:50px; border-radius:20px;   background-color:#023B6D;" 
-">
 {% if messages %} 
 <script>
   {% for message in messages %}
@@ -18,7 +15,22 @@
       });
   {% endfor %}
 </script>
+{% endif %}{% if messages %} 
+<script>
+  {% for message in messages %}
+      Swal.fire({
+          position: "top-end",
+          icon: "{{ message.tags }}",
+          title: "{{ message.tags|title }}",
+          text: "{{ message }}",
+          showConfirmButton: false,
+          timer: 1500
+      });
+  {% endfor %}
+</script>
 {% endif %}
+<div class="trains w-50 mx-auto p-5 mb-5  text-white fw-bold border border-2 border-success" style="margin-top: 150px; margin-bootm:50px; border-radius:20px;   background-color:#023B6D;">
+
   {% comment %} action="{% url 'filter_trains' %}" {% endcomment %}
   <h1 class="text-center py-2">Book Your Ticket</h1>
   

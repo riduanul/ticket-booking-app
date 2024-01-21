@@ -3,22 +3,22 @@
 {% load static %}
 {% load crispy_forms_tags%}
 
-
+{% if messages %} 
+<script>
+  {% for message in messages %}
+      Swal.fire({
+          position: "top-end",
+          icon: "{{ message.tags }}",
+          title: "{{ message.tags|title }}",
+          text: "{{ message }}",
+          showConfirmButton: false,
+          timer: 1500
+      });
+  {% endfor %}
+</script>
+{% endif %}
 <div id="carouselExampleIndicators" class="carousel slide text-white">
-  {% if messages %} 
-  <script>
-    {% for message in messages %}
-        Swal.fire({
-            position: "top-end",
-            icon: "{{ message.tags }}",
-            title: "{{ message.tags|title }}",
-            text: "{{ message }}",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    {% endfor %}
-  </script>
-  {% endif %}
+ 
   <div class="carousel-indicators">
     <button
       type="button"

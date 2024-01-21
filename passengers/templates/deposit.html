@@ -1,7 +1,4 @@
 {% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
-
-<div class="container mb-5 p-5 text-white" style="width: 50%; margin: auto; margin-top:150px; border-radius:20px; background-color:#023B6D;">
-  <h1 class="text-white text-center pb-3 pt-2">Deposit</h1>
 {% if messages %} 
 <script>
   {% for message in messages %}
@@ -16,6 +13,9 @@
   {% endfor %}
 </script>
 {% endif %}
+<div class="container mb-5 p-5 text-white" style="width: 50%; margin: auto; margin-top:150px; border-radius:20px; background-color:#023B6D;">
+  <h1 class="text-white text-center pb-3 pt-2">Deposit</h1>
+
 
 <form method="POST" action="">
     {% csrf_token %} {{form | crispy}}

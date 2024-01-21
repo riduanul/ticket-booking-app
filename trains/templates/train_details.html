@@ -17,21 +17,21 @@
     color: white;
   }
 </style>
-
+{% if messages %} 
+<script>
+  {% for message in messages %}
+      Swal.fire({
+          position: "top-end",
+          icon: "{{ message.tags }}",
+          title: "{{ message.tags|title }}",
+          text: "{{ message }}",
+          showConfirmButton: false,
+          timer: 1500
+      });
+  {% endfor %}
+</script>
 <div class="booking w-75 mx-auto mb-5 p-5 text-white" style='background-color:#023B6D; margin-top:100px; border-radius:20px;'>
-  {% if messages %} 
-  <script>
-    {% for message in messages %}
-        Swal.fire({
-            position: "top-end",
-            icon: "{{ message.tags }}",
-            title: "{{ message.tags|title }}",
-            text: "{{ message }}",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    {% endfor %}
-  </script>
+ 
   {% endif %}
   <div class="row align-items-center">
     <div class="col-md-6 text-center" style="line-height: 35px">

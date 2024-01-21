@@ -1,8 +1,5 @@
 {% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
-
-<div class="container mb-5 p-5 text-white" style="width: 80%; margin: auto; margin-top:120px; border-radius:20px; background-color:#023B6D;">
-  <h2 class="text-white text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
-  {% if messages %} 
+{% if messages %} 
 <script>
   {% for message in messages %}
       Swal.fire({
@@ -16,6 +13,9 @@
   {% endfor %}
 </script>
 {% endif %}
+<div class="container mb-5 p-5 text-white" style="width: 80%; margin: auto; margin-top:120px; border-radius:20px; background-color:#023B6D;">
+  <h2 class="text-white text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
+ 
   <h4 class="text-bg-secondary text-center p-2 "><a class="text-decoration-none text-dark" href="{% url 'update_profile'%}">Update Your Profile</a></h4>
     <h4 class="text-bg-success text-center p-2"><a class="text-decoration-none text-dark" href="{% url 'update_password'%}">Update Your Password</a></h4>
     <div class="booking_history" >
