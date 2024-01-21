@@ -85,11 +85,12 @@ class BookSeatView(LoginRequiredMixin, View):
         
         
         if not seat_number:
+           
             messages.warning(request, "Please enter a seat number.")
             return redirect('details', pk=train.pk)
 
         if not seat_number.isdigit() or int(seat_number) not in range(1, train.available_seats + 1):
-            messages.warning(request, "Invalid Seat Number")
+            messages.errors(request, "Invalid Seat Number")
             return redirect('details', pk=train.pk)
 
         if Booking.objects.filter( train=train, booked_seat=seat_number).exists():

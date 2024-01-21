@@ -1,26 +1,21 @@
 {% extends "base.html" %} {% block content %}
 
+
+<div class="trains w-50 mx-auto mb-5 p-5  text-center text-white fw-bold border border-2 border-success" style="margin-top: 200px;border-radius:20px;   background-color:#023B6D;">
 {% if messages %} 
-<script>
-  {% for message in messages %}
-      Swal.fire({
-          position: "top-end",
-          icon: "{{ message.tags }}",
-          title: "{{ message.tags|title }}",
-          text: "{{ message }}",
-          showConfirmButton: false,
-          timer: 1500
-      });
-  {% endfor %}
-</script>
+{% for message in messages %}
+<p {% if message.tags %} class="text-{{ message.tags }} text-center fw-bold" {% endif %}>
+    {{ message }}
+</p>
+{% endfor %} 
 {% endif %}
-<div class="trains w-50 mx-auto mb-5 p-5  text-center text-white fw-bold border border-2 border-success" style="margin-top: 120px;border-radius:20px;   background-color:#023B6D;">
-   
+
+
 {% if trains %}
     <h2>Available Trains:</h2>
     <ul class="list-unstyled ">
         {% for train in trains %}
-            <a href="{%url 'details' train.pk %}" class="text-decoration-none lh-5 text-white"><li >{{ train.train }} At: {{ train.departure_time }}</li></a>
+            <a href="{%url 'details' train.pk %}" class="text-decoration-none lh-5 text-whtie"><li >{{ train.train }} At: {{ train.departure_time }}</li></a>
         {% endfor %}
     </ul>
 {% else %}

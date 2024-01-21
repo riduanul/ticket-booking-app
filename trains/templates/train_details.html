@@ -17,21 +17,14 @@
     color: white;
   }
 </style>
-{% if messages %} 
-<script>
-  {% for message in messages %}
-      Swal.fire({
-          position: "top-end",
-          icon: "{{ message.tags }}",
-          title: "{{ message.tags|title }}",
-          text: "{{ message }}",
-          showConfirmButton: false,
-          timer: 1500
-      });
-  {% endfor %}
-</script>
+
 <div class="booking w-75 mx-auto mb-5 p-5 text-white" style='background-color:#023B6D; margin-top:100px; border-radius:20px;'>
- 
+  {% if messages %} 
+  {% for message in messages %}
+  <p {% if message.tags %} class="text-{{ message.tags }} text-center fw-bold" {% endif %}>
+      {{ message }}
+  </p>
+  {% endfor %} 
   {% endif %}
   <div class="row align-items-center">
     <div class="col-md-6 text-center" style="line-height: 35px">
@@ -98,5 +91,7 @@
     </form>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 {% endblock content %}
