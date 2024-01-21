@@ -18,14 +18,21 @@
   }
 </style>
 
-<div class="booking w-75 mx-auto my-5 py-5">
+<div class="booking w-75 mx-auto mb-5 p-5 text-white" style='background-color:#023B6D; margin-top:100px; border-radius:20px;'>
   {% if messages %} 
-{% for message in messages %}
-<p {% if message.tags %} class="{{ message.tags }} text-center fw-bold" {% endif %}>
-  {{ message }}
-</p>
-{% endfor %} 
-{% endif %}
+  <script>
+    {% for message in messages %}
+        Swal.fire({
+            position: "top-end",
+            icon: "{{ message.tags }}",
+            title: "{{ message.tags|title }}",
+            text: "{{ message }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    {% endfor %}
+  </script>
+  {% endif %}
   <div class="row align-items-center">
     <div class="col-md-6 text-center" style="line-height: 35px">
       <h3>{{ train.train }}</h3>
@@ -39,13 +46,13 @@
         <label for="seat_number">Enter Seat Number</label><br />
         <input type="text" name="seat_number" id="seat_number" required /><br />
 
-        <button type="submit" class="btn btn-success my-2" name="booking_btn_submit">
+        <button type="submit" class="btn btn-primary my-2" name="booking_btn_submit">
           Pay and Book
         </button>
       </form>
     </div>
     <div class="col-md-6">
-      <h3 class="text-center text-bg-info text-white">Available Seats</h3>
+      <h3 class="text-center text-bg-secondary p-3 text-white">Available Seats</h3>
       {% if train.available_seats > 0 %}
       <div class="seat-plan mx-auto" style="width: 300px">
         {% for seat in available_seats %}
@@ -61,18 +68,18 @@
       {% endif %}
     </div>
   </div>
-   <div class="card p-2 m-2">
-    <h5> Total Comments: {{comments | length }}</p>
-    <div class="card-body">
+   <div class="card p-3 mt-2  " style="background-color:#023B6D">
+    <h5 class='text-white'> Total Comments: {{comments | length }}</p>
+    <div class="card-body" style="background-color:#023B6D">
         {%for comment in comments%}
-            <div class="p-2 lh-4 bg-body-secondary">
+            <div class="p-2 lh-4 " style="background-color:#023B6D">
                 <p><small class='fw-bold'>{{comment.name}}</small> <small class='fs-6'>{{comment.date}}</small></p>
                 <p>{{comment.comment}}</p>
             </div>
         {%endfor%}
     </div>
 </div> 
-  <div class="w-75 mx-auto my-5">
+  <div class="w-75 mx-auto mb-5 p-5 text-white" style="width: 50%; margin: auto; border-radius:20px;   background-color:#023B6D; ">
     <form  method="POST">
       {% csrf_token %} 
       {{comment_form | crispy }}
@@ -82,7 +89,7 @@
          </div>
       {% endif %}
       <button
-        class="btn btn-success btn-sm"
+        class="btn btn-primary btn-sm"
         type="submit"
         name="comment_btn_submit"
       >

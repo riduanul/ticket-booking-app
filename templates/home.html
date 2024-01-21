@@ -3,22 +3,22 @@
 {% load static %}
 {% load crispy_forms_tags%}
 
-<style>
-  .custom-carousel-caption {
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    {% comment %} transform: translate(-50%, -50%); {% endcomment %}
-  }
-</style>
+
 <div id="carouselExampleIndicators" class="carousel slide text-white">
   {% if messages %} 
-{% for message in messages %}
-<p {% if message.tags %} class="{{ message.tags }} text-center fw-bold" {% endif %}>
-  {{ message }}
-</p>
-{% endfor %} 
-{% endif %}
+  <script>
+    {% for message in messages %}
+        Swal.fire({
+            position: "top-end",
+            icon: "{{ message.tags }}",
+            title: "{{ message.tags|title }}",
+            text: "{{ message }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    {% endfor %}
+  </script>
+  {% endif %}
   <div class="carousel-indicators">
     <button
       type="button"
@@ -44,7 +44,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img
-        src="{% static 'images/3.jpg' %}"
+        src="{% static 'images/1.avif' %}"
         class="d-block w-100"
         alt="image"
         style="
@@ -55,11 +55,11 @@
         "
       />
       <div
-        class="carousel-caption d-flex flex-column justify-content-center align-items-center" style="margin-bottom:150px"
+        class="carousel-caption d-flex flex-column justify-content-left align-items-center" style="margin-bottom:150px"
       >
         <h1>Find Your Train</h1>
         <h5>Vacation</h5>
-        <a  href="{% url 'search_trains' %}"class="btn btn-info">Book Your Ticket</a>
+        <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a>
       </div>
     </div>
     <div class="carousel-item">
@@ -75,11 +75,11 @@
         "
       />
       <div
-        class="carousel-caption d-flex flex-column justify-content-center align-items-center" style="margin-bottom:150px"
+        class="carousel-caption text-success d-flex flex-column justify-content-center align-items-center" style="margin-bottom:150px"
       >
         <h1>Find Your Train</h1>
         <h5>Vacation</h5>
-        <a  href="{% url 'search_trains' %}"class="btn btn-info">Book Your Ticket</a>
+        <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a>
       </div>
     </div>
     <div class="carousel-item">
@@ -99,7 +99,7 @@
       >
         <h1>Find Your Train</h1>
         <h5>Vacation</h5>
-        <a  href="{% url 'search_trains' %}"class="btn btn-info">Book Your Ticket</a>
+        <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a>
       </div>
     </div>
   </div>
@@ -122,6 +122,95 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<!-- booking section -->
+<div class="booking-section">
+    <section class="my-5 py-5 ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Train Image -->
+                    <img src="{% static 'images/travel.jpeg' %}" alt="Train Image" style="width: 100%;">
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- Hero Content -->
+                    <h1 class="hero-heading">Book Your Train Tickets Online</h1>
+                    <p class="hero-subtext">Easy, Fast, and Secure Booking</p>
+                    <a href="{% url 'search_trains' %}" class="btn btn-primary btn-lg">Book Ticket</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+
+</div>
+
+<!-- services section -->
+<div class="services-section">
+  <section class="services my-5 py-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-12 text-center my-3">
+                <h2 class="section-heading text-uppercase fw-bolder">Our Services</h2>
+                <p class="text-muted">Discover the convenient services we offer for train ticket booking.</p>
+            </div>
+        </div>
+        <div class="row text-center ">
+            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                <!-- <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-train fa-stack-1x fa-inverse"></i>
+                </span> -->
+                <img src="{% static 'images/4.jpg' %}" alt="Train Image" style="width:80%; height:300px">
+
+                <h4 class="service-heading">Easy Booking</h4>
+                <p class="text-muted">Quick and easy train ticket booking process.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                <img src="{% static 'images/5.jpg' %}" alt="Train Image" style="width:80%; height:300px">
+                <h4 class="service-heading">Flexible Schedule</h4>
+                <p class="text-muted">Choose from a variety of schedules to suit your needs.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                <img src="{% static 'images/6.jpg' %}" alt="Train Image" style="width:80%; height:300px">
+                <h4 class="service-heading">Secure Payments</h4>
+                <p class="text-muted">Safe and secure online payment options.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- about section -->
+<div class="about-section">
+  <section class="about-section">
+    <div class="container">
+        <div class="row my-5 py-5 align-items-center">
+            <div class="col-lg-6">
+                <!-- Column with Vector Image -->
+                <img src="{% static 'images/7.webp' %}" alt="Vector Image" style="width: 80%;">
+            </div>
+            <div class="col-lg-6" style="font-size: large;">
+                <!-- Column with Text and Icons -->
+                <h2 class="section-heading fw-bold pb-2" >About Us</h2>
+                <p>
+                    <i class="fas fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <p>
+                    <i class="fas fa-check-circle"></i> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <p>
+                    <i class="fas fa-check-circle"></i> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                </p>
+                <p>
+                    <i class="fas fa-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+                </p>
+                <p>
+                    <i class="fas fa-check-circle"></i> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
 
 {% endblock content %}

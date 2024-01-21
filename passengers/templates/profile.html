@@ -1,19 +1,26 @@
 {% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
 
-<div class="container" style="width: 80%; margin: auto; margin-top:100px;">
-  <h2 class="text-success text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
+<div class="container mb-5 p-5 text-white" style="width: 80%; margin: auto; margin-top:120px; border-radius:20px; background-color:#023B6D;">
+  <h2 class="text-white text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
   {% if messages %} 
+<script>
   {% for message in messages %}
-  <p {% if message.tags %} class="{{ message.tags }} text-center fw-bold" {% endif %}>
-    {{ message }}
-  </p>
-  {% endfor %} 
-  {% endif %}  
-  <h4 class="text-bg-warning text-center p-2"><a class="text-decoration-none text-black" href="{% url 'update_profile'%}">Update Your Profile</a></h4>
-    <h4 class="text-bg-success text-center p-2"><a class="text-decoration-none text-black" href="{% url 'update_password'%}">Update Your Password</a></h4>
-    <div class="booking_history">
+      Swal.fire({
+          position: "top-end",
+          icon: "{{ message.tags }}",
+          title: "{{ message.tags|title }}",
+          text: "{{ message }}",
+          showConfirmButton: false,
+          timer: 1500
+      });
+  {% endfor %}
+</script>
+{% endif %}
+  <h4 class="text-bg-secondary text-center p-2 "><a class="text-decoration-none text-dark" href="{% url 'update_profile'%}">Update Your Profile</a></h4>
+    <h4 class="text-bg-success text-center p-2"><a class="text-decoration-none text-dark" href="{% url 'update_password'%}">Update Your Password</a></h4>
+    <div class="booking_history" >
         <h4 class="text-center">Booking History</h4>
-        <table class="table text-center">
+        <table class="table text-center" >
             <thead>
               <tr>
                 <th scope="col">Id</th>
@@ -25,7 +32,7 @@
                 <th scope="col">Seat No</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style='background-color:#023B6D;'>
                 {% if bookings %}
                     {% for booking in bookings %}
                         <tr>
