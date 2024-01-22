@@ -92,41 +92,49 @@
       
     {%endblock %}
     
-    <footer class="row pb-0 mt-5" style="background-color: #023B6D; color: #fff; padding: 50px 0;">
-      <div class="d-flex  mx-auto  p-5 ">
-          <div class="col-md-3">
-              <p><small>Copyright ©BookTicket. All Rights Reserved </small></p>
-              <h5 class="pb-2">Follow Us</h5>
-              <div class="icons d-flex gap-3">
-                  <img src="images/fb.png" alt="" style="width:50px">
-                  <img src="images/linkedin.png" alt="" style="width:50px">
-                  <img src="images/youtube.png" alt="" style="width:50px">
-              </div>
+    <footer class="pb-0 mt-5" style="background-color: #023B6D; color: #fff; padding: 50px 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <p><small>Copyright ©BookTicket. All Rights Reserved </small></p>
+            <h5 class="pb-2">Follow Us</h5>
+            <div class="icons d-flex gap-3">
+              <img src="{% static 'images/fb.png' %}" alt="" style="width:50px; cursor:pointer;">
+              <img src="{% static 'images/linkedin.png' %}" alt="" style="width:50px; cursor:pointer;">
+              <img src="{% static 'images/youtube.png' %}" alt="" style="width:50px; cursor:pointer;">
+            </div>
           </div>
-          <div class="col-md-3 list-unstyled">
-              <h5>Company</h5>
+          <div class="col-md-3 col-sm-6">
+            <h5>Company</h5>
+            <ul class="list-unstyled">
               <li>About</li>
               <li>Contact Us</li>
               <li>Culture</li>
               <li>Blog</li>
+            </ul>
           </div>
-          <div class="col-md-3 list-unstyled">
-              <h5>Information</h5>
+          <div class="col-md-3 col-sm-6">
+            <h5>Information</h5>
+            <ul class="list-unstyled">
               <li>About</li>
               <li>Contact Us</li>
               <li>Culture</li>
               <li>Blog</li>
+            </ul>
           </div>
-          <div class="col-md-3 list-unstyled">
-           <h5> Contact Us</h5>
-           <li> Email: info@example.com</li>
-            
-            <li>Phone: +1 123-456-7890</li>
+          <div class="col-md-3 col-sm-6">
+            <h5>Contact Us</h5>
+            <ul class="list-unstyled">
+              <li>Email: info@example.com</li>
+              <li>Phone: +1 123-456-7890</li>
+            </ul>
           </div>
+        </div>
+        <hr>
+        <p class="text-center px-0"><small>Copyright ©BookTicket. All Rights Reserved</small></p>
       </div>
-      <hr>
-      <p class="text-center px-0"><small>Copyright ©BookTicket. All Rights Reserved</small></p>
-  </footer>    
+    </footer>
+      
 
    
     

@@ -51,8 +51,7 @@
         {% for seat in available_seats %}
         <div class="seat {% if seat in booked_seat_numbers %}booked{% endif %}">
           <a style="cursor: pointer">{{ seat }}</a>
-          {% comment %} href="{% url 'book_seat' pk=train.pk seat_number=seat
-          %}" {% endcomment %}
+         
         </div>
         {% endfor %}
       </div>
