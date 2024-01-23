@@ -17,8 +17,64 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
+    <style>
+      .hvr-underline-from-left {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        position: relative;
+        overflow: hidden;
+      }
+      .hvr-underline-from-left:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 100%;
+        bottom: 0;
+        background: #2098D1;
+        height: 4px;
+        -webkit-transition-property: right;
+        transition-property: right;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+      }
+      .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+        right: 0;
+      }
+    </style>
   </head>
   <body>
+    {% for i in messages %} 
+      <script> 
+        // Trigger SweetAlert2 automatically based on a condition 
+        {% if i.tags == 'warning' %} 
+        document.addEventListener('DOMContentLoaded', function() { 
+          Swal.fire({ 
+              title: 'Message!', 
+              text: '{{i}}', 
+              icon: 'warning', 
+              confirmButtonText: 'OK' 
+          }); 
+        }); 
+        {% else %} 
+        document.addEventListener('DOMContentLoaded', function() { 
+          Swal.fire({ 
+              title: 'Message!', 
+              text: '{{i}}', 
+              icon: 'success', 
+              confirmButtonText: 'OK' 
+          }); 
+        }); 
+        {% endif %} 
+    </script> 
+    {% endfor %}
+
     <header>
       <nav class="navbar navbar-expand-lg fixed-top text-white" style="background-color: #023B6D;">
         <div class="container">
@@ -46,7 +102,7 @@
             
               {%if request.user.is_authenticated%}
               <div class="text-blue-900 my-auto font-black px-5">Welcome, {{ request.user.first_name }} (balance : {{request.user.user_account.balance}}) </div>
-              <li class="nav-item btn btn-outline-info ">
+              <li class="nav-item hvr-underline-from-left">
                 <a
                   class="nav-link active text-white"
                   aria-current="page"
@@ -54,26 +110,26 @@
                   >Home</a
                 >
               </li>
-              <li class="nav-item btn btn-outline-info ">
+              <li class="nav-item hvr-underline-from-left ">
                 <a class="nav-link text-white" href="{% url 'deposit' %}">Deposit</a>
               </li> 
-              <li class="nav-item btn btn-outline-info ">
+              <li class="nav-item hvr-underline-from-left ">
                 <a class="nav-link text-white" href="{% url 'profile'%}">Profile</a>
               </li>
-              <li class="nav-item btn btn-outline-info ">
+              <li class="nav-item hvr-underline-from-left ">
                 <a class="nav-link text-white" href="{% url 'logout' %}"
                   >Logout</a
                 >
               </li>
               {% else %}
-              <li class="nav-item d-flex justify-content-around align-items-center btn btn-outline-info">
+              <li class="nav-item d-flex justify-content-around align-items-center hvr-underline-from-left">
                 <a class="nav-link text-white" href="{% url 'login' %}"
                   >Login</a
                 >
 
                 <i class="fa-regular fa-user"></i>
               </li>
-              <li class="nav-item d-flex justify-content-around align-items-center btn btn-outline-info ">
+              <li class="nav-item d-flex justify-content-around align-items-center hvr-underline-from-left ">
                 <a class="nav-link text-white " href="{% url 'signup' %}"
                   >Register</a
                 >
@@ -139,7 +195,7 @@
    
     
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

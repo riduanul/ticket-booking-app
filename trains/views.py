@@ -56,14 +56,15 @@ class TrainDetails(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         train = self.object
-        available_seats = range(1, train.available_seats + 1)
+        total_seats = range(1, 30 + 1)
         booked_seats = Booking.objects.filter(train=train)
         booked_seat_numbers = [booking.booked_seat for booking in booked_seats]
         comments = train.comments.all()
         comment_form = CommentForm()
-
+        
         context.update({
-            'available_seats': available_seats,
+            
+            'total_seats': total_seats,
             'booked_seat_numbers': booked_seat_numbers,
             'comments': comments,
             'comment_form': comment_form

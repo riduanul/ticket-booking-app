@@ -18,15 +18,8 @@
   }
 </style>
 
-<div class="booking w-75 mx-auto mb-5 p-5 text-white" style='background-color:#023B6D; margin-top:100px; border-radius:20px;'>
-  {% if messages %} 
-  {% for message in messages %}
-  <p {% if message.tags %} class="text-{{ message.tags }} text-center fw-bold" {% endif %}>
-      {{ message }}
-  </p>
-  {% endfor %} 
-  {% endif %}
-  <div class="row align-items-center">
+<div class="booking w-75 mx-auto mb-5 p-5" style='margin-top:100px; border-radius:20px;'>
+   <div class="row align-items-center">
     <div class="col-md-6 text-center" style="line-height: 35px">
       <h3>{{ train.train }}</h3>
       <h5>{{ train.departure_station }} to {{ train.arrival_station }}</h5>
@@ -48,7 +41,7 @@
       <h3 class="text-center text-bg-secondary p-3 text-white">Available Seats</h3>
       {% if train.available_seats > 0 %}
       <div class="seat-plan mx-auto" style="width: 300px">
-        {% for seat in available_seats %}
+        {% for seat in total_seats %}
         <div class="seat {% if seat in booked_seat_numbers %}booked{% endif %}">
           <a style="cursor: pointer">{{ seat }}</a>
          
@@ -60,18 +53,9 @@
       {% endif %}
     </div>
   </div>
-   <div class="card p-3 mt-2  " style="background-color:#023B6D">
-    <h5 class='text-white'> Total Comments: {{comments | length }}</p>
-    <div class="card-body" style="background-color:#023B6D">
-        {%for comment in comments%}
-            <div class="p-2 lh-4 " style="background-color:#023B6D">
-                <p><small class='fw-bold'>{{comment.name}}</small> <small class='fs-6'>{{comment.date}}</small></p>
-                <p>{{comment.comment}}</p>
-            </div>
-        {%endfor%}
-    </div>
-</div> 
-  <div class="w-75 mx-auto mb-5 p-5 text-white" style="width: 50%; margin: auto; border-radius:20px;   background-color:#023B6D; ">
+
+  <div class="w-100 mb-5 p-5 " style="width: 50%; margin: auto; border-radius:20px;   ">
+    <h4>Leave Your Comment Here</h4>
     <form  method="POST">
       {% csrf_token %} 
       {{comment_form | crispy }}
@@ -89,6 +73,17 @@
       </button>
     </form>
   </div>
+  <div class="card p-3 mt-2 ">
+    <h5 class=''> Comments: {{comments | length }}</p>
+    <div class="card-body">
+        {%for comment in comments%}
+            <div class="p-2 lh-4 ">
+                <p><small class='fw-bold'>{{comment.name}}</small> <small class='fs-6'>{{comment.date}}</small></p>
+                <p>{{comment.comment}}</p>
+            </div>
+        {%endfor%}
+    </div>
+</div> 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
