@@ -50,6 +50,10 @@
       .ls{
         letter-spacing: 2px;
       }
+      .swal-wide{
+        width:350px !important;
+        height: 350px !important;
+    }
     </style>
   </head>
   <body>
@@ -63,12 +67,13 @@
         {% if i.tags == 'warning' %} 
         document.addEventListener('DOMContentLoaded', function() { 
           Swal.fire({ 
-              position: "top-end",
+              position: "top-center",
               title: 'Message!', 
               text: '{{i}}', 
               icon: 'warning', 
+              customClass:'swal-wide',
               showConfirmButton: false,
-              timer: 1500
+              timer: 2000
           }); 
         }); 
         {% else %} 
@@ -89,9 +94,13 @@
     <header>
       <nav class="navbar navbar-expand-lg fixed-top text-white" style="background-color: #023B6D;">
         <div class="container">
-          <a class="navbar-brand text-white p-2 fw-bold" href="{% url 'home' %}"
+          
+          <div class='d-flex justify-content-around align-items-lg-center'>
+            <img src='{%static 'images/logo.png ' %}' alt='image-logo'  class='w-100' style='height:50px'/>
+            <a class="navbar-brand text-white p-2 fw-bold" href="{% url 'home' %}"
             >BookTicket</a
           >
+          </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -123,6 +132,9 @@
               </li>
               <li class="nav-item hvr-underline-from-left ">
                 <a class="nav-link text-white" href="{% url 'deposit' %}">Deposit</a>
+              </li> 
+              <li class="nav-item hvr-underline-from-left ">
+                <a class="nav-link text-white" href="#services">Services</a>
               </li> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -173,6 +185,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <p><small>Copyright ©BookTicket. All Rights Reserved </small></p>
+            
             <h5 class="pb-2">Follow Us</h5>
             <div class="icons d-flex gap-3">
               <img src="{% static 'images/fb.png' %}" alt="" style="width:50px; cursor:pointer;">
@@ -206,9 +219,9 @@
             </ul>
           </div>
         </div>
-        <hr>
-        <p class="text-center px-0"><small>Copyright ©BookTicket. All Rights Reserved</small></p>
       </div>
+      <hr>
+      <p class="text-center px-0"><small>Copyright ©BookTicket. All Rights Reserved</small></p>
     </footer>
       
 
