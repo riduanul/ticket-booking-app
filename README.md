@@ -33,12 +33,12 @@ Welcome to the Train Ticket Booking App GitHub repository! This web application 
 - **Booking Information:** Users can view a history of all the train tickets booked by them.
 
 ## Live Link
-[Live Demo]([http://your-live-link.com](https://ticket-booking-app-nl0a.onrender.com/))
+[Live Demo](https://ticket-booking-app-nl0a.onrender.com/)
 
 ## Installation
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/train-ticket-booking-app.git
+   git clone https://github.com/riduanul/ticket-booking-app.git
 
