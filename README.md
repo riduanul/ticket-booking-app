@@ -4,8 +4,9 @@ Welcome to the Train Ticket Booking App GitHub repository! This web application 
 ## **Technologies:** 
 **Python, Django, Html, Css, Bootstrap**
 
-## Features
+## Features:
 
+## User:
 ### 1. Authentication and Authorization
 
 - **User Registration:** New users can register by providing necessary information.
@@ -31,6 +32,13 @@ Welcome to the Train Ticket Booking App GitHub repository! This web application 
 - **Update Password:** Users can change their password for security purposes.
 - **Update User Information:** Users can modify their personal information in the profile section.
 - **Booking Information:** Users can view a history of all the train tickets booked by them.
+
+## Admin:
+- Admin Can Add and Delete a Train
+- Admin Can Make, Update and Delete Schedual
+- Admin Can Mange Users
+
+
 
 ## Live Link
 [Live Demo](https://ticket-booking-app-nl0a.onrender.com/)
