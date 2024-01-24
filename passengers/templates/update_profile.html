@@ -1,8 +1,9 @@
 {% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
 
-<div class="container mb-5 p-5 text-white" style="width: 50%; margin: auto; margin-top:150px; border-radius:20px; background-color:#023B6D;">
+<div class="container mb-5 p-5 border border-1 border-primary" style="width: 50%; margin: auto; margin-top:150px; border-radius:20px; color:#023B6D;">
  
   <form method="POST" action="">
+    <h2 class='text-center fw-bold' >Update Your Profile</h2>
     {% csrf_token %} {{form | crispy}}
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
