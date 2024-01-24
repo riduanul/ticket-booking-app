@@ -1,7 +1,7 @@
 # Train Ticket Booking App
 ## **Technology:** 
 **Python, Django, Html, Css, Bootstrap**
-##Features:
+## Features:
 ### Registraion
 *Login*
 *Filter Train By Destination, Date, Time*
