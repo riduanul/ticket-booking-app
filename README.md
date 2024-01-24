@@ -1,7 +1,6 @@
 # Train Ticket Booking App
-
 ## **Technology:** 
-###**Python, Django, Html, Css, Bootstrap**
+**Python, Django, Html, Css, Bootstrap**
 ##Features:
 ### Registraion
 *Login*
@@ -10,3 +9,4 @@
 *Deposit Amount*
 *Profile to see the Bookings Details*
 +Update Profile and Password*
+
