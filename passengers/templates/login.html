@@ -13,21 +13,14 @@
   }
 </style>
 
-<div class="login w-75 mx-auto">
-  <div class="row custom-mobile-spacing justify-content-center align-item-center">
+<div class="login w-75 mx-auto" style='margin-top: 100px'>
+  <div class="row  justify-content-center align-item-center">
     <div class="col-md-6 col-sm-12">
-      <img src="{% static 'images/login2.jpg' %}" alt="login image" class="img-fluid" style="width:100%; margin-top:80px; border-radius:20px;">
+      <img src="{% static 'images/login2.jpg' %}" alt="login image" class="img-fluid" style="width:100%; border-radius:20px;">
     </div>
-    <div class="col-md-6 col-sm-12 custom-mobile-spacing">
-      <div class="mb-5" style="margin-top:150px; border-radius:20px; padding:70px; border:1px solid lightblue;">
+    <div class="col-md-6 col-sm-12  mt-5">
+      <div class="p-5" style=" border-radius:20px; border:1px solid lightblue;">
         <h1 class="text-center pb-3 pt-2 fw-bolder" style="color:#023B6D">Login</h1>
-        {% if messages %}
-          {% for message in messages %}
-            <p {% if message.tags %} class="{{ message.tags }} text-center fw-bold" {% endif %}>
-              {{ message }}
-            </p>
-          {% endfor %}
-        {% endif %}
         <form method="POST" action="">
           {% csrf_token %} {{ form | crispy }}
           <button type="submit" class="btn btn-primary">Submit</button>
