@@ -18,15 +18,15 @@
   }
 </style>
 
-<div class="booking w-75 mx-auto mb-5 p-5" style='margin-top:100px; border-radius:20px;'>
-   <div class="row align-items-center">
-    <div class="col-md-6 text-center" style="line-height: 35px">
-      <h3>{{ train.train }}</h3>
-      <h5>{{ train.departure_station }} to {{ train.arrival_station }}</h5>
-      <h5>On: {{ train.date_of_journey }}</h5>
-      <h5>At: {{ train.departure_time }}</h5>
-      <h5 class="text-danger">Available Seats: {{ train.available_seats }}</h5>
-      <h3>Booking Fee: {{train.ticket_price}}</h3>
+<div class="container booking mx-auto mb-5 p-5" style='margin-top:100px;'>
+   <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12  p-3 text-center rounded" style="line-height: 35px; background-color:lightgray">
+      <h4 class='fw-bold'>{{ train.train }}</h4>
+      <h6>{{ train.departure_station }} to {{ train.arrival_station }}</h6>
+      <h6>On: {{ train.date_of_journey }}</h6>
+      <h6>At: {{ train.departure_time }}</h6>
+      <h6 class="text-danger fw-bold">Available Seats: {{ train.available_seats }}</h6>
+      <h5 class='fw-bold'>Booking Fee: {{train.ticket_price}}</h5>
       <form action="{% url 'booking' train.id %}" method="POST">
         {% csrf_token %}
         <label for="seat_number">Enter Seat Number</label><br />
@@ -37,8 +37,8 @@
         </button>
       </form>
     </div>
-    <div class="col-md-6">
-      <h3 class="text-center text-bg-secondary p-3 text-white">Available Seats</h3>
+    <div class="col-lg-6 col-md-6 col-sm-12 shadow">
+      <h4 class="text-center p-3 fw-bold " style='background-color:lightgray; color:#023B6D'>Available Seats</h4>
       {% if train.available_seats > 0 %}
       <div class="seat-plan mx-auto" style="width: 300px">
         {% for seat in total_seats %}

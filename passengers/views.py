@@ -130,5 +130,5 @@ class DepositMoneyView(LoginRequiredMixin, CreateView):
         account = self.request.user.user_account
         account.balance += amount
         account.save(update_fields = ['balance'])
-        messages.success(self.request, 'Successfully ${amount} added to you account ')
+        messages.success(self.request, 'Successfully {amount} added to you account ')
         return super().form_valid(form)
