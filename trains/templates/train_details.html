@@ -9,18 +9,21 @@
     margin: 5px;
     text-align: center;
     line-height: 40px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
   }
 
   .booked {
     background-color: red;
     color: white;
   }
+  .ls{
+    latter-spacing:2px;
+  }
 </style>
 
-<div class="container booking mx-auto mb-5 p-5" style='margin-top:100px;'>
-   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12  p-3 text-center rounded" style="line-height: 35px; background-color:lightgray">
+<div class="container-fluid booking mx-auto mb-5 " style='margin-top:100px;'>
+   <div class="row gap-5 justify-content-center">
+    <div class="col-lg-5 col-md-6 col-sm-12 ls shadow py-3 text-center rounded" style="line-height: 35px; background-color:lightgray">
       <h4 class='fw-bold'>{{ train.train }}</h4>
       <h6>{{ train.departure_station }} to {{ train.arrival_station }}</h6>
       <h6>On: {{ train.date_of_journey }}</h6>
@@ -37,8 +40,8 @@
         </button>
       </form>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 shadow">
-      <h4 class="text-center p-3 fw-bold " style='background-color:lightgray; color:#023B6D'>Available Seats</h4>
+    <div class="col-lg-5 col-md-6 col-sm-12 shadow rounded py-3" style='background-color:lightgray;'>
+      <h4 class="text-center p-3 fw-bold " style='background-color:lightgray;  color:#023B6D'>Available Seats</h4>
       {% if train.available_seats > 0 %}
       <div class="seat-plan mx-auto" style="width: 300px">
         {% for seat in total_seats %}

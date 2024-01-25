@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %} {%load crispy_forms_tags%}
 
 <div class="container mb-5 p-5" style="width: 80%; margin: auto; margin-top:120px; border-radius:20px;color:#023B6D; background-color:lightgray;">
-  <h2 class="text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr.{{request.user.first_name}}</h2>
+  <h3 class="text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr. {{request.user.first_name}}</h3>
  
   <div class="booking_history"style='border-radius:20px;' >
         <h4 class="text-center fw-bolder">Booking History</h4>
