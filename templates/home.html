@@ -3,201 +3,30 @@
 {% load static %}
 {% load crispy_forms_tags%}
 
+<!-- banner section -->
+{% include "banner.html" %}
+<!-- banner section end -->
 
-<div id="carouselExampleIndicators" class="carousel slide text-white">
- 
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img
-        src="{% static 'images/1.avif' %}"
-        class="d-block w-100"
-        alt="image"
-        style="
-          height: 100vh;
-          min-height: 300px;
-          background: no-repeat center center scroll;
-          background-size: cover;
-        "
-      />
-      <div
-        class=" text-white carousel-caption d-flex flex-column justify-content-left align-items-start" style="margin-bottom:220px"
-      >
-        <h1 class='fw-bolder '>Find Your Train</h1>
-        <h5>Vacation</h5>
-        <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a>
-      </div>
-    </div>
-    <div class="carousel-item ">
-      <img
-        src="{% static 'images/trainbd.jpg' %}"
-        class="d-block w-100"
-        alt="image"
-        style="
-          height: 100vh;
-          min-height: 300px;
-          background: no-repeat center center scroll;
-          background-size: cover;
-        "
-      />
-      <div
-        class="text-dark carousel-caption d-flex flex-column justify-content-center align-items-center" 
-      >
-        <h1 class='fw-bolder'>Enjoy Your Journey</h1>
-        <h5>Vacation</h5>
-        <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="{% static 'images/3.jpg' %}"
-        class="d-block w-100"
-        alt="image"
-        style="
-          height: 100vh;
-          min-height: 300px;
-          background: no-repeat center center scroll;
-          background-size: cover;
-        "
-      />
-      <div
-        class=" text-black carousel-caption d-flex flex-column justify-content-center align-items-end" style="margin-bottom:150px"
-      >
-        {% comment %} <h1 class='fw-bolder'>Find Your Train</h1>
-        <h5>Vacation</h5> {% endcomment %}
-        {% comment %} <a  href="{% url 'search_trains' %}"class="btn btn-primary">Book Your Ticket</a> {% endcomment %}
-      </div>
-    </div>
-  </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExampleIndicators"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExampleIndicators"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+
 <!-- booking section -->
-<div class="booking-section">
-    <section class="my-5 py-5 ">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Train Image -->
-                    <img src="{% static 'images/travel.jpeg' %}" alt="Train Image" style="width: 100%;">
-                </div>
-                <div class="col-lg-6 text-center">
-                    <!-- Hero Content -->
-                    <h1 class="hero-heading">Book Your Train Tickets Online</h1>
-                    <p class="hero-subtext">Easy, Fast, and Secure Booking</p>
-                    <a href="{% url 'search_trains' %}" class="btn btn-primary btn-lg">Book Ticket</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-</div>
+{% include "booking.html" %}
 
 <!-- services section -->
-<div class="services-section" id='services'>
-  <section class="services my-5 py-5">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12 text-center my-3">
-                <h2 class="section-heading text-uppercase fw-bolder">Our Services</h2>
-                <p class="text-muted">Discover the convenient services we offer for train ticket booking.</p>
-            </div>
-        </div>
-        <div class="row text-center ">
-            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
-                <!-- <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-train fa-stack-1x fa-inverse"></i>
-                </span> -->
-                <img src="{% static 'images/booking.webp' %}" alt="Train Image" style="width:80%; height:300px">
+{% include "service.html" %}
 
-                <h4 class="service-heading">Easy Booking</h4>
-                <p class="text-muted">Quick and easy train ticket booking process.</p>
-            </div>
-            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
-                <img src="{% static 'images/schedual.avif' %}" alt="Train Image" style="width:80%; height:300px">
-                <h4 class="service-heading">Flexible Schedule</h4>
-                <p class="text-muted">Choose from a variety of schedules to suit your needs.</p>
-            </div>
-            <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
-                <img src="{% static 'images/payment.avif' %}" alt="Train Image" style="width:80%; height:300px">
-                <h4 class="service-heading">Secure Payments</h4>
-                <p class="text-muted">Safe and secure online payment options.</p>
-            </div>
-        </div>
-    </div>
-</section>
-</div>
+{% comment %} why choose us {% endcomment %}
+{% include "why_choose_us.html" %}
+
+{% comment %} happiest choice {% endcomment %}
+{% include "choice.html" %}
+
+{% comment %} our team {% endcomment %}
+{% include "our_team.html" %}
 
 <!-- about section -->
-<div class="about-section">
-  <section class="about-section">
-    <div class="container">
-        <div class="row my-5 py-5 align-items-center">
-            <div class="col-lg-6">
-                <!-- Column with Vector Image -->
-                <img src="{% static 'images/7.webp' %}" alt="Vector Image" style="width: 80%;">
-            </div>
-            <div class="col-lg-6" style="font-size: large;">
-                <!-- Column with Text and Icons -->
-                <h2 class="section-heading fw-bold pb-2" >About Us</h2>
-                <p>
-                    <i class="fas fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                <p>
-                    <i class="fas fa-check-circle"></i> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p>
-                    <i class="fas fa-check-circle"></i> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                </p>
-                <p>
-                    <i class="fas fa-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
-                </p>
-                <p>
-                    <i class="fas fa-check-circle"></i> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-</div>
+{% include "about.html" %}
+
+{% comment %} reviews {% endcomment %}
+{% include "reviews.html" %}
 
 {% endblock content %}

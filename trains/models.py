@@ -47,6 +47,8 @@ class Booking(models.Model):
     def __str__(self):
         return f'{self.user.user.first_name} {self.user.user.last_name} {self.train.train} on {self.train.date_of_journey} at {self.train.departure_time} seat no: {self.booked_seat} '
 
+    def cancel_booking(self):
+        self.delete()
 
 class Comment(models.Model):
     train = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='comments', null=True)

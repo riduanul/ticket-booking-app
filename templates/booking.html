@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="booking-section my-5 py-5">
+        <section class="my-5 py-5 ">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Train Image -->
+                        <img src="{% static 'images/travel.jpeg' %}" alt="Train Image" style="width: 100%;">
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <!-- Hero Content -->
+                        <h1 class="hero-heading">Book Your Train Tickets Online</h1>
+                        <p class="hero-subtext">Easy, Fast, and Secure Booking</p>
+                        <a href="{% url 'search_trains' %}" class="btn btn-primary btn-lg">Book Ticket</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="services-section" id='services'>
+        <section class="services my-5 py-5">
+          <div class="container">
+              <div class="row ">
+                  <div class="col-lg-12 text-center my-3">
+                      <h2 class="section-heading text-uppercase fw-bolder">Our Services</h2>
+                      <p class="text-muted">Discover the convenient services we offer for train ticket booking.</p>
+                  </div>
+              </div>
+              <div class="row text-center ">
+                  <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                      <!-- <span class="fa-stack fa-4x">
+                          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                          <i class="fas fa-train fa-stack-1x fa-inverse"></i>
+                      </span> -->
+                      <img src="{% static 'images/booking.webp' %}" alt="Train Image" style="width:80%; height:300px">
+      
+                      <h4 class="service-heading">Easy Booking</h4>
+                      <p class="text-muted">Quick and easy train ticket booking process.</p>
+                  </div>
+                  <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                      <img src="{% static 'images/schedual.avif' %}" alt="Train Image" style="width:80%; height:300px">
+                      <h4 class="service-heading">Flexible Schedule</h4>
+                      <p class="text-muted">Choose from a variety of schedules to suit your needs.</p>
+                  </div>
+                  <div class="col-md-4 col-sm-12 justify-content-center align-items-center">
+                      <img src="{% static 'images/payment.avif' %}" alt="Train Image" style="width:80%; height:300px">
+                      <h4 class="service-heading">Secure Payments</h4>
+                      <p class="text-muted">Safe and secure online payment options.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+      </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket</title>
+    <style>
+        /* Your CSS styles for the ticket */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .ticket {
+            width: 300px;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        /* Add more styles for ticket elements (e.g., heading, details, etc.) */
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <h1>Train Ticket</h1>
+        <p>User: {{ booking.user.username }}</p>
+        <p>Destination: {{ booking.destination }}</p>
+        <p>Date: {{ booking.date }}</p>
+        <p>Time: {{ booking.time }}</p>
+        <p>Seat Number: {{ booking.seat_number }}</p>
+        <p>Ticket Price: {{ booking.ticket_price }}</p>
+        <!-- Add more ticket details as needed -->
+    </div>
+</body>
+</html>

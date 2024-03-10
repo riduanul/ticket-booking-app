@@ -15,6 +15,8 @@
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
                 <th scope="col">Seat No</th>
+                <th scope="col">Download Ticket</th>
+                <th scope="col">Cancel Booking</th>
               </tr>
             </thead>
             <tbody >
@@ -28,6 +30,17 @@
                             <td>{{ booking.train.date_of_journey }}</td>
                             <td>{{ booking.train.departure_time }}</td>
                             <td>{{ booking.booked_seat }}</td>
+                            <td>
+                                <form method="PoOST" action="{% url 'download_ticket' booking.id %}">
+                                  <button class="btn btn-primary btn-sm">Download</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{% url 'cancel_booking' booking.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                </form>
+                            </td>
                         </tr>
                     {% endfor %}
                 {% else %}
