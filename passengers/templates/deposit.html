@@ -4,6 +4,7 @@
   <h1 class="text-center pb-3 pt-2 fw-bold">Deposit</h1>
 
 <form method="POST" action="">
+  <div><p class='text-center text-blue fs-3 fw-bold '>Balance : {{request.user.user_account.balance}}</p></div>
     {% csrf_token %} {{form | crispy}}
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
