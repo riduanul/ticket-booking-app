@@ -112,20 +112,20 @@ class BookSeatView(LoginRequiredMixin, View):
         
         booking = Booking.objects.create(user=user_instance, train=train, booked_seat=seat_number)
 
-        message = render_to_string('email.html', {
-            'user':request.user.user_account,
-            'train': booking.train.train,
-            'from': booking.train.departure_station,
-            'to':booking.train.arrival_station,
-            'date': booking.train.date_of_journey,
-            'time': booking.train.departure_time,
-            'seat': booking.booked_seat,
-            'price': booking.train.ticket_price,
-        })
-        send_email = EmailMultiAlternatives('Ticket Booking Confirmation', '', to=[request.user.email])
-        send_email.attach_alternative(message, 'text/html')
-        send_email.send()
-        messages.success(request, "Successfully ticket has been booked! You have also a Confirmation Email.")
+        # message = render_to_string('email.html', {
+        #     'user':request.user.user_account,
+        #     'train': booking.train.train,
+        #     'from': booking.train.departure_station,
+        #     'to':booking.train.arrival_station,
+        #     'date': booking.train.date_of_journey,
+        #     'time': booking.train.departure_time,
+        #     'seat': booking.booked_seat,
+        #     'price': booking.train.ticket_price,
+        # })
+        # send_email = EmailMultiAlternatives('Ticket Booking Confirmation', '', to=[request.user.email])
+        # send_email.attach_alternative(message, 'text/html')
+        # send_email.send()
+        messages.success(request, "Successfully ticket has been booked! ")
         train.available_seats -= 1
         train.save()
     
