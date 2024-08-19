@@ -31,14 +31,14 @@ class SignupView(FormView):
         user = form.save()
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        current_site = get_current_site(self.request)
-        confirm_link = f"https://ticket-booking-app-nl0a.onrender.com/accounts/active/{uid}/{token}/"
-        email_subject = 'Email Confirmation'
-        email_body = render_to_string('confirmation_email.html', {'confirm_link': confirm_link})
-        email = EmailMultiAlternatives(email_subject, '', to=[user.email])
-        email.attach_alternative(email_body, 'text/html')
-        email.send()
-        messages.success(self.request, " Signup Successfull. Check Your Email To Confirm Email ")
+        # current_site = get_current_site(self.request)
+        # confirm_link = f"https://ticket-booking-app-nl0a.onrender.com/accounts/active/{uid}/{token}/"
+        # email_subject = 'Email Confirmation'
+        # email_body = render_to_string('confirmation_email.html', {'confirm_link': confirm_link})
+        # email = EmailMultiAlternatives(email_subject, '', to=[user.email])
+        # email.attach_alternative(email_body, 'text/html')
+        # email.send()
+        # messages.success(self.request, " Signup Successfull. Check Your Email To Confirm Email ")
        
         return super().form_valid(form)
     
@@ -66,6 +66,9 @@ class LoginView(LoginView):
 def userLogout(request):
     logout(request)
     return redirect('home')
+
+def dashboard_view(request):
+    return render(request, 'dashboard.html')
 
 
 class ProfileView(ListView):

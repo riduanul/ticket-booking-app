@@ -3,7 +3,7 @@
 <div class="container mb-5 p-5" style="width: 80%; margin: auto; margin-top:120px; border-radius:20px;color:#023B6D; background-color:lightgray;">
   <h3 class="text-center pb-3 pt-2 fw-bold">Welcome to your Profile Mr. {{request.user.first_name}}</h3>
  
-  <div class="booking_history"style='border-radius:20px;' >
+  <div class="booking_history table-responsive table-responsive-md table-responsive-sm"style='border-radius:20px;' >
         <h4 class="text-center fw-bolder">Booking History</h4>
         <table class="table text-center" >
             <thead>
@@ -31,7 +31,7 @@
                             <td>{{ booking.train.departure_time }}</td>
                             <td>{{ booking.booked_seat }}</td>
                             <td>
-                                <form method="PoOST" action="{% url 'download_ticket' booking.id %}">
+                                <form method="POST" action="{% url 'download_ticket' booking.id %}">
                                   <button class="btn btn-primary btn-sm">Download</button>
                                 </form>
                             </td>

@@ -8,7 +8,8 @@
     {% comment %} <link rel="stylesheet" href="css/home.css" /> {% endcomment %}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-ez9QCCBnb12OE0IrgTcY2C7otXD81sAi+5eXpm5qBXoCc8aMjZidTwxU8in1sPQl" crossorigin="anonymous">
-
+ <!-- Include Tailwind CSS -->
+ <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
   <!-- Template Main CSS File -->
     <title>Train Ticket Booking system || django</title>
     <link
@@ -92,11 +93,11 @@
     {% endfor %}
 
     <header>
-      <nav class="navbar navbar-expand-lg fixed-top text-white" style="background-color: #023B6D;">
+      <nav class="navbar  navbar-expand-lg fixed-top text-white" style="background-color: #023B6D;">
         <div class="container">
           
-          <div class='d-flex justify-content-around align-items-lg-center'>
-            {% comment %} <img src='{%static 'images/logo.png ' %}' alt='image-logo'  class='w-100' style='height:50px'/> {% endcomment %}
+          <div class='d-flex justify-content-between align-items-center'>
+            <img src='{%static 'images/logo.png ' %}' alt='image-logo'  class='w-100' style='height:50px'/>
             <a class="navbar-brand text-white p-2 fw-bold" href="{% url 'home' %}"
             >BookTicket</a
           >
@@ -121,8 +122,8 @@
            
             
               {%if request.user.is_authenticated%}
-              <div class="text-blue-900 my-auto font-black px-5">Welcome, {{ request.user.first_name }} (balance : {{request.user.user_account.balance}}) </div>
-              <li class="nav-item hvr-underline-from-left">
+              <div class="text-blue-900 my-auto font-black px-5 fs-6">Welcome, {{ request.user.first_name }} (balance : {{request.user.user_account.balance}}) </div>
+              <li class="nav-item hvr-underline-from-left fs-6">
                 <a
                   class="nav-link active text-white"
                   aria-current="page"
@@ -148,6 +149,11 @@
                 </ul>
               </li>
              
+              <li class="nav-item hvr-underline-from-left ">
+                <a class="nav-link text-white" href="{% url 'dashboard' %}"
+                  >Dashboard</a
+                >
+              </li>
               <li class="nav-item hvr-underline-from-left ">
                 <a class="nav-link text-white" href="{% url 'logout' %}"
                   >Logout</a
